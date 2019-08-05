@@ -2,10 +2,11 @@
 
 var tweetLink = 'https://twitter.com/intent/tweet?text=';
 var quoteUrl = 'https://quotesondesign.com/wp-json/postsfilter[orderby]=rand&filter[posts_per_page]=1';
+var prefix = "https://cors-anywhere.herokuapp.com/";
 
 
 function getQuote() {
-    fetch(quoteUrl, {
+    fetch(prefix + quoteUrl, {
             cache: 'no-store'
         })
         .then(function (resp) {
