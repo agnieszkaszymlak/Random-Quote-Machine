@@ -1,12 +1,12 @@
 'use strict';
 
+// Variable "tweetLink" for sending tweets and a variable "quoteUrl" for retrieving quotes
 var tweetLink = 'https://twitter.com/intent/tweet?text=';
-var quoteUrl = 'https://quotesondesign.com/wp-json/postsfilter[orderby]=rand&filter[posts_per_page]=1';
-var prefix = "https://cors-anywhere.herokuapp.com/";
+var quoteUrl = 'https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1';
 
-
+// Function that retrieves the quote
 function getQuote() {
-    fetch(prefix + quoteUrl + '&test='+ Math.floor(Math.random() * 100),  {
+    fetch(quoteUrl, {
             cache: 'no-store'
         })
         .then(function (resp) {
@@ -15,7 +15,7 @@ function getQuote() {
         .then(createTweet);
 }
 
-
+// Create Tweet
 function createTweet(input) {
     var data = input[0];
 
@@ -41,6 +41,7 @@ function createTweet(input) {
     document.querySelector('.tweet').setAttribute('href', tweet);
 }
 
+// Snapping on an .trigger class item listening for a click event, and generate a quote
 document.addEventListener('DOMContentLoaded', function () {
     getQuote();
     document.querySelector('.trigger').addEventListener('click', function () {
