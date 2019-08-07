@@ -6,7 +6,7 @@ var prefix = "https://cors-anywhere.herokuapp.com/";
 
 
 function getQuote() {
-    fetch(prefix + quoteUrl, {
+    fetch(prefix + quoteUrl+ '&test='+ Math.floor(Math.random() * 100),  {
             cache: 'no-store'
         })
         .then(function (resp) {
